@@ -25,4 +25,6 @@ suggQuickView: {
 })
 
 //compile schema to model -- for reuse
-module.exports = mongoose.model('items', ProductSchema); //collection name
+const Product = mongoose.model('items', ProductSchema); //collection name
+
+module.exports = Product;

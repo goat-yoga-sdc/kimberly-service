@@ -15,4 +15,15 @@ app.use(cors());
 app.use(morgan('dev'));
 app.listen(port, () => console.log(`Listening at http://localhost:${port}`))
 
-
+app.get('/products/suggested', (req, res) => {
+  console.log('Get Suggested Items')
+  connection.find({})
+    .exec((err, products) => {
+      if (err) {
+        console.error(err)
+      } else {
+        console.log(products);
+        res.json(products);
+      }
+    })
+})
