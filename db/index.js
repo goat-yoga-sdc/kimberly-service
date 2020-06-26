@@ -1,30 +1,15 @@
-const mongoose = require ('mongoose');
+var mysql = require('mysql');
 
-//create name of database
-mongoose.connect('mongodb://localhost/suggested-test', { useNewUrlParser: true },
-(err) => {
-  if (err) {
-    console.log (err)
-  } else {
-    console.log('Connected!')
-  }
+var connection = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "suggestedItems"
 });
 
-const Schema = mongoose.Schema;
+connection.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
 
-let ProductSchema = new Schema ({ // collections = table
-  suggItem: String,
-  suggPrice: Number,
-  suggImage: String,
-  suggVariation: String,
-  suggMiniDesc: String,
-suggQuickView: {
-  suggImageGallery: Array,
-  suggFullDesc: String
-    }
-})
-
-//compile schema to model -- for reuse
-const Product = mongoose.model('items', ProductSchema); //collection name
-
-module.exports = Product;
+module.exports = connection;

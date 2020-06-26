@@ -1,5 +1,5 @@
-const Product = require('./index.js');
-const faker = require('faker');
+const db = require("./index.js");
+const faker = require("faker");
 
 const noun = ['Lip Gloss', 'Eyeliner', 'Lipstick', 'Eyeshadow', 'Bronzer', 'Primer', 'Moisturizer', 'Cream', 'Blush', 'Gloss', 'Balm', 'Cleanser', 'Mascara', 'Powder', 'Setting Spray', 'Palette', 'Brush', 'Highlighter', 'Eye Cream', 'Concealer', 'Brow', 'Tint', 'Lash', 'Solution', 'Serum', 'Mask', 'Oil', 'Glow', 'Remover', 'Lip Liner', 'Shine', 'Paint', 'Lip', 'Pen', 'Nail Polish', 'Face Mask', 'Peel', 'Mist', 'Eraser', 'BB Cream', 'CC Cream', 'Eye Powder', 'Brow Stick', 'Brow Powder', 'Tinter', 'Pomade', 'Stain', 'Eye Pencil', 'Cover', 'Set', 'Trio', 'Duo', 'Makeup', 'Skincare']
 
@@ -7,62 +7,55 @@ const adj = ['Milky', 'Dewy', 'Shiny', 'Glossy', 'Moist', 'Super', 'Slick', 'Sti
 
 const generateProduct = () => {
   let productList = {};
-  productList.productItem = `${adj[Math.floor(Math.random() * Math.floor(adj.length))]} ${noun[Math.floor(Math.random() * Math.floor(noun.length))]}`;
+  productList.productItem = `${
+    adj[Math.floor(Math.random() * Math.floor(adj.length))]
+  } ${noun[Math.floor(Math.random() * Math.floor(noun.length))]}`;
 
   return productList.productItem;
-}
+};
 
+const type = ["Skincare", "Makeup", "Body", "Fragrance"];
 
-const imageArrGen = () => {
-  let imageArr = [];
+const generateType = () => {
+  let typeObj = {};
+  typeObj.productType = `${
+    type[Math.floor(Math.random() * Math.floor(type.length))]
+  }`;
 
-  for (let i = 0; i < 3; i++) {
-  imageArr.push(faker.image.fashion())
-  }
-  return imageArr
-}
+  return typeObj.productType;
+};
 
-const mockGenerator = () => {
-  let data = [];
-
-  for(let i = 0; i < 400; i++) {
-    let product = generateProduct();
+const seedMain = () => {
+  for (let i = 0; i < 400; i++) {
+    let item = generateProduct();
     let price = faker.commerce.price();
     let image = faker.image.fashion();
-    let variation = faker.commerce.color();
+    let shade = faker.commerce.color();
+    let type = generateType();
     let miniDesc = faker.lorem.sentence();
-    let imageGallery = imageArrGen();
     let fullDesc = faker.lorem.paragraph();
-    let entry = {
-      suggItem: product,
-      suggPrice: price,
-      suggImage: image,
-      suggVariation: variation,
-      suggMiniDesc: miniDesc,
-    suggQuickView: {
-      suggImageGallery: imageGallery,
-      suggFullDesc: fullDesc
+
+    db.query(
+      `INSERT INTO MainSuggest (suggItem, suggPrice, suggImage, suggShade, suggMiniDesc, suggDesc, suggType) VALUES ('${item}', ${price}, '${image}', '${shade}', '${miniDesc}', '${fullDesc}', '${type}')`,
+      (err, result) => {
+        if (err) {
+          console.error(err);
+        } else {
+          console.log("Seed Successful");
         }
-    }
-    data.push(entry);
+      }
+    );
   }
-  return data;
-}
+};
 
-const seedMe = (data) => {
-  suggestedItems = [];
-
-  for (var i = 0; i < data.length; i++) {
-    let entry = new Product (data[i]);
-    suggestedItems.push(entry);
+const seedQuickView = () => {
+  for (let j = 0; j < 800; j++) {
+    let qvImage = faker.image.fashion();
+    db.query(`INSERT INTO QuickView (qvImage) VALUES ('${qvImage}')`);
   }
-  Product.insertMany(suggestedItems, (err) => {
-    if (err) {
-      console.error(err)
-    } else {
-      console.log('Seeding Saved to DB')
-    }
-  })
-}
+};
 
-seedMe(mockGenerator());
+seedMain();
+seedQuickView();
+
+db.end();
