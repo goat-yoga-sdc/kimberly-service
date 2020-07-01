@@ -6,23 +6,28 @@ USE suggestedItems;
 
 CREATE TABLE MainSuggest (
   id INT NOT NULL AUTO_INCREMENT,
-  suggItem VARCHAR(50),
+  suggItem VARCHAR(255),
   suggPrice INT,
-  suggImage VARCHAR(100),
-  suggShade VARCHAR(25),
-  suggSize VARCHAR(50),
-  suggMiniDesc VARCHAR(255),
+  suggMiniPrice INT,
+  suggMain VARCHAR(300),
+  suggHover VARCHAR(300),
+  suggShade INT,
+  suggBest VARCHAR(10),
+  suggMiniDesc VARCHAR(100),
   suggType VARCHAR(50),
-  suggDesc VARCHAR(255),
+  suggDesc VARCHAR(500),
   PRIMARY KEY (id)
 );
 
 CREATE TABLE QuickView (
   id INT NOT NULL AUTO_INCREMENT,
-  qvItem INT,
-  qvImage VARCHAR(100),
-  PRIMARY KEY (id),
-  FOREIGN KEY (qvItem) REFERENCES MainSuggest(id)
-);
+  qvImage VARCHAR(255),
+  PRIMARY KEY (id)
+  );
 
+CREATE TABLE Shades (
+  id INT NOT NULL AUTO_INCREMENT,
+  shadeImage VARCHAR(255),
+  PRIMARY KEY (id)
+);
 

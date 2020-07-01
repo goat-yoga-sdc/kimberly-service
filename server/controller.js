@@ -1,10 +1,28 @@
 const dbHelpers = require('../db/model.js');
 
 const controller = {
-get: (req, res) => {
-  dbHelpers.get((err, result) => {
+getAll: (req, res) => {
+  dbHelpers.getAll((err, result) => {
     if (err) {
-      res.status(400).send('Cannot Get')
+      res.status(400).send('Cannot Get All')
+    } else {
+      res.status(200).send(result)
+    }
+  })
+},
+getShades: (req, res) => {
+  dbHelpers.getShades((err, result) => {
+    if (err) {
+      res.status(400).send('Cannot Get Shades')
+    } else {
+      res.status(200).send(result)
+    }
+  })
+},
+getQuickview: (req, res) => {
+  dbHelpers.getQuickview((err, result) => {
+    if (err) {
+      res.status(400).send('Cannot Get Quickview Images')
     } else {
       res.status(200).send(result)
     }
