@@ -3,6 +3,14 @@ const controller = require('./controller.js');
 
 router
 .route('/suggested')
-.get(controller.get);
+.get(controller.getAll)
+
+router
+.route('/shades')
+.get(controller.getShades);
+
+router
+.route('/quickview')
+.get(controller.getQuickview);
 
 module.exports = router;

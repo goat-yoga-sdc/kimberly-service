@@ -1,0 +1,442 @@
+@import url(//db.onlinewebfonts.com/c/0406c39d71726a4efe1134bf8e3feb71?family=Apercu+Pro);
+@font-face {font-family: "Apercu Pro"; src: url("//db.onlinewebfonts.com/t/0406c39d71726a4efe1134bf8e3feb71.eot"); src: url("//db.onlinewebfonts.com/t/0406c39d71726a4efe1134bf8e3feb71.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/0406c39d71726a4efe1134bf8e3feb71.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/0406c39d71726a4efe1134bf8e3feb71.woff") format("woff"), url("//db.onlinewebfonts.com/t/0406c39d71726a4efe1134bf8e3feb71.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/0406c39d71726a4efe1134bf8e3feb71.svg#Apercu Pro") format("svg"); }
+
+@import url(//db.onlinewebfonts.com/c/bbecd6e12f97db669f1cbab12fc6d06b?family=Apercu+Pro);
+@font-face {font-family: "Apercu Pro Bold"; src: url("//db.onlinewebfonts.com/t/bbecd6e12f97db669f1cbab12fc6d06b.eot"); src: url("//db.onlinewebfonts.com/t/bbecd6e12f97db669f1cbab12fc6d06b.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/bbecd6e12f97db669f1cbab12fc6d06b.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/bbecd6e12f97db669f1cbab12fc6d06b.woff") format("woff"), url("//db.onlinewebfonts.com/t/bbecd6e12f97db669f1cbab12fc6d06b.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/bbecd6e12f97db669f1cbab12fc6d06b.svg#Apercu Pro") format("svg"); }
+
+@import url(//db.onlinewebfonts.com/c/94f471810369b8531227eec84cda498c?family=FreightDisplayW01-Book);
+@font-face {font-family: "Freight Display"; src: url("//db.onlinewebfonts.com/t/94f471810369b8531227eec84cda498c.eot"); src: url("//db.onlinewebfonts.com/t/94f471810369b8531227eec84cda498c.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/94f471810369b8531227eec84cda498c.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/94f471810369b8531227eec84cda498c.woff") format("woff"), url("//db.onlinewebfonts.com/t/94f471810369b8531227eec84cda498c.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/94f471810369b8531227eec84cda498c.svg#FreightDisplayW01-Book") format("svg"); }
+
+
+.main {
+  margin-left: 64px;
+  margin-right: 64px;
+  margin-bottom: 24px;
+}
+
+.overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.title {
+  display: block;
+  font-family: "Freight Display";
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  height: 39px;
+  margin-bottom: 5px;
+  flex-shrink: 1;
+  flex-grow: 1;
+  letter-spacing: 1.25px;
+}
+
+.mockbar {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.items-container {
+  display: flex;
+  align-items: flex-start;
+  flex-basis: auto;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  flex-direction: row;
+  flex-grow: 0;
+  flex-shrink: 1;
+  line-height: 21px;
+}
+
+.image {
+  position: relative;
+}
+
+.item-img {
+  background-position-x: 50%;
+  background-position-y: 50%;
+  background-size: cover;
+  display: block;
+  overflow: hidden;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  position: static;
+  top: auto;
+  left: auto;
+  text-align: left;
+  list-style-type: none;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.hover-img {
+  background-position-x: 50%;
+  background-position-y: 50%;
+  background-size: cover;
+  display: block;
+  overflow: hidden;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  position: relative;
+  top: auto;
+  left: auto;
+  text-align: left;
+  list-style-type: none;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.bestseller {
+  position: absolute;
+  display: block;
+  border: none;
+  background-color: #ffffff;
+  font-family: "Apercu Pro Bold";
+  line-height: 18px;
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 700;
+  height: 23px;
+  opacity: 0.8;
+  border-radius: 3px;
+  top: 10px;
+  right: 10px;
+  padding: 5px;
+  cursor: default;
+  pointer-events: none;
+
+}
+
+.quickview {
+  font-family: "Apercu Pro Bold";
+  font-size: 12px;
+  bottom: 0px;
+  padding: 0px;
+  background-color: rgba(250, 249, 247, 0.8);
+  position: absolute;
+  border-radius: 0px;
+  border-style: none;
+  display: block;
+  flex-grow: 1;
+  flex-shrink: 1;
+  justify-content: center;
+  width: 100%;
+  height: 32px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.quickview:hover {
+  color: rgb(0, 0, 255);
+}
+
+.space {
+  box-sizing: border-box;
+  flex-basis: 25%;
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin-bottom: 16px;
+  margin-right: 0px;
+  margin-left: 0px;
+  margin-top: 16px;
+  max-width: 50%;
+  padding-left: 8px;
+  padding-right: 8px;
+  display: list-item;
+  list-style-type: none;
+}
+
+.details-container {
+  background-color: #fafafa;
+  box-sizing: border-box;
+  display: block;
+  flex-wrap: wrap;
+  /* height: 130px; */
+  width: auto;
+  font-family: "Apercu Pro";
+  font-size: 14px;
+  line-height: 21px;
+  font-style: normal;
+  line-height: 21px;
+  padding: 12px, 12px, 0px, 12px;
+  flex-direction: column;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(0, 0,255);
+  text-decoration: underline;
+}
+
+.item-name {
+  font-family: "Apercu Pro Bold";
+  font-size: 16px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-left: 12px;
+  padding-top: 12px;
+}
+
+.mini-desc {
+  font-family: "Apercu Pro";
+  font-size: 14px;
+  font-style: none;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-left: 12px;
+  flex-wrap: wrap;
+}
+
+.size-button, .bag-button, .shade-button {
+  align-items: center;
+  background-color: white;
+  border-color: rgb(217, 217, 217);
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+  border-radius: 3px;
+  border-image-width: 1;
+  border-image-slice: 100%;
+  box-sizing: border-box;
+  box-shadow: none;
+  color: black;
+  font-family: "Apercu Pro Bold";
+  font-stretch: 100%;
+  /* flexbox */
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0%;
+  justify-content: center;
+  line-height: 14px;
+  min-height: 40px;
+  max-width: none;
+  width: 100%;
+  padding: 12px;
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+  text-rendering: auto;
+}
+
+.choose-shade {
+  padding-top: 8px;
+  padding-left: 12px;
+  font-family: "Apercu Pro Bold";
+}
+
+.size-div, .shade-div, .bag-div {
+  background-color: #fafafa;
+  border-top-color: #fafafa;
+  padding: 12px;
+  margin-top: 5px;
+}
+
+.size-text, .bag-text, .shade-text {
+  text-align: center;
+}
+
+.size-title {
+  font-family: "Apercu Pro Bold";
+}
+
+.choose-size {
+  display: flex;
+  flex-direction: column;
+}
+
+.swatch-container {
+  padding-left: 5px;
+  padding-bottom: 5px;
+}
+
+.swatch-button, .qv-img-circles {
+  border-radius: 100%;
+  height: 26px;
+  width: 26px;
+  border-width: 2px;
+  border-color: #fafafa;
+  padding: 8px;
+  margin: 5px;
+  box-shadow: none;
+  border-image-width: 1;
+  border-style: solid;
+  justify-content: center;
+}
+
+.swatch-button:hover, .qv-img-circles:hover {
+  border-color: blue;
+  border-width: 2px;
+  outline: none;
+  box-shadow: none;
+}
+
+.swatch-button:focus, .qv-img-circles:focus, .size-button:focus, .bag-button:focus, .shade-button:focus, .quickview:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+
+
+
+.product-view{
+  position: absolute;
+  width: 810px;
+  height: 600px;
+  padding: 10px;
+  border: 3px black;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  z-index: 2;
+  overflow-x: auto;
+  overflow-y: auto;
+  display: block;
+  box-sizing: border-box;
+  border-radius: 8px;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.qv-window {
+  opacity: 60%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: #fafafa;
+}
+
+.qv-title {
+  font-family: "Apercu Pro";
+  font-size: 14px;
+  padding-left:20px;
+}
+
+
+.close-button{
+  background-color: white;
+  border: none;
+  position:absolute;
+  left: 93%;
+  top: 3%;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.big-img{
+  max-width: 100%;
+  height: 486.656px;
+  background-position-x: 50%;
+  background-position-y: 50%;
+  box-sizing: border-box;
+  cursor: pointer;
+  object-fit: cover;
+  white-space: normal;
+  display: block;
+  float: left;
+  flex-basis: 40%;
+}
+
+.full-desc{
+  box-sizing: border-box;
+  font-family: "Apercu Pro";
+  font-size: 14px;
+  display: block;
+  line-height: 20px;
+  margin: 0px;
+  position: relative;
+  flex-wrap: wrap;
+  flex-shrink: 1;
+  left: 12px;
+  padding-right: 25px;
+}
+
+a.see-page {
+  color: blue;
+  font-family: "Apercu Pro Bold";
+  font-size: 14px;
+}
+
+.options {
+  position: absolute;
+  z-index: 3;
+  left: 55%;
+  top: 65%;
+}
+
+.qv-shades, .qv-size {
+  font-family: "Apercu Pro";
+  font-size: 14px;
+}
+
+.qv-button {
+  align-items: center;
+  background-color: black;
+  border-color: black;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+  border-radius: 3px;
+  border-image-width: 1;
+  border-image-slice: 100%;
+  box-sizing: border-box;
+  box-shadow: none;
+  color: white;
+  font-family: "Apercu Pro";
+  font-stretch: 100%;
+  /* flexbox */
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0%;
+  justify-content: center;
+  line-height: 14px;
+  height: 48px;
+  min-height: 48px;
+  max-width: none;
+  width: 226px;
+  padding: 12px;
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+  text-rendering: auto;
+}
+
+.qv-img-row {
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  width: 50px;
+  padding-right: 8px;
+}
+
+.qv-img-static {
+  display: flex;
+  width: 50px;
+  height: 40%;
+}
+
+.qv-main {
+  display: flex;
+}

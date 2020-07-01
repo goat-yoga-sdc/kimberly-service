@@ -1,52 +1,66 @@
-import React from 'react';
-import axios from 'axios';
-import Items from './Items.jsx';
+import React from "react";
+import axios from "axios";
+import Items from "./Items.jsx";
 
 class App extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       items: [],
-      showItems: 4
-    }
+      startRange: Math.floor(Math.random() * Math.floor(50)),
+      display: [],
+      shades: []
+    };
     this.getData = this.getData.bind(this);
+
+  }
+
+  componentDidMount() {
+    this.getData();
   }
 
 
-  componentDidMount () {
-    this.getData()
-  }
 
-  getData () {
+  getData() {
     axios
-    .get('/products/suggested')
-    .then((data) => {
-      this.setState ({
-        items: data.data
+      .get("/products/suggested")
+      .then((data) => {
+        this.setState({
+          items: data.data
+        });
+
+        let randomProducts = [];
+        for(var i = 0; i < 4; i++) {
+            let min = Math.ceil(0);
+            let max = Math.floor(50);
+            randomProducts.push(data.data[Math.floor(Math.random() * (max - min + 1)) + min])
+        }
+        this.setState({
+          display: randomProducts
+        })
       })
-    })
-    .catch((err) => {
-      console.error(err)
-    })
-    .then(() => {
-      console.log(this.state)
-    })
+      .catch((err) => {
+        console.error(err);
+      })
   }
 
-  render () {
+
+
+  render() {
     return (
+      <div className="overlay" >
       <div className="main">
-        <div className="mockbar">
-          <img src="https://mock-website-shades.s3-us-west-1.amazonaws.com/bar.jpg"></img>
+
+        <h2 className="title">You may also like</h2>
+        <div className="items-container">
+          {this.state.display
+            .map((item, index) => (
+              <Items item={item} key={index}/>
+            ))}
         </div>
-
-
-      <div className="items-container">
-      {this.state.items.slice(0, this.state.showItems).map((item, index) => (<Items item={item} key={index} />))}
-
       </div>
       </div>
-    )
+    );
   }
 }
 
