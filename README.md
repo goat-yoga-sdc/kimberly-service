@@ -5,8 +5,7 @@
 ## Related Projects
 
   - https://github.com/Dumpling-Squad/Reviews-module
-  - https://github.com/Dumpling-Squad/purchase-window
-  - https://github.com/secolinsky/navigation.git
+  - https://github.com/Dumpling-Squad/nav-bar
   - https://github.com/Dumpling-Squad/product-description
 
 ## Table of Contents
@@ -19,6 +18,9 @@
 
 > Some usage instructions
 
+Seeding File, from db folder directory: 
+- npm run seed
+
 ## Requirements
 
 An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
@@ -30,7 +32,10 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
 ### Installing Dependencies
 
-From within the root directory:
+From within the root directory: 
+- npm install
+- npm start
+- npm run build
 
 ```sh
 npm install -g webpack
