@@ -19,7 +19,9 @@
 > Some usage instructions
 
 Seeding File, from db folder directory: 
-- npm run seed
+```sh
+npm run seed
+```
 
 ## Requirements
 
@@ -33,12 +35,11 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 ### Installing Dependencies
 
 From within the root directory: 
-- npm install
-- npm start
-- npm run build
-
 ```sh
 npm install -g webpack
 npm install
+
+npm start
+npm run build
 ```
 
