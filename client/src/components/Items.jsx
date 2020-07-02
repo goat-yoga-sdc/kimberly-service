@@ -35,7 +35,7 @@ class Items extends React.Component {
 
   getShades() {
     axios
-      .get("/products/shades")
+      .get("http://localhost:3050/products/shades")
       .then((data) => {
         this.setState({
           shades: data.data
@@ -48,7 +48,7 @@ class Items extends React.Component {
 
   getQuickviewImg() {
     axios
-      .get("/products/quickview")
+      .get("http://localhost:3050/products/quickview")
       .then((data) => {
         this.setState({
           quickview: data.data

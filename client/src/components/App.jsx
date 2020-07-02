@@ -23,7 +23,7 @@ class App extends React.Component {
 
   getData() {
     axios
-      .get("/products/suggested")
+      .get("http://localhost:3050/products/suggested")
       .then((data) => {
         this.setState({
           items: data.data
