@@ -7,7 +7,6 @@ class App extends React.Component {
     super(props);
     this.state = {
       items: [],
-      startRange: Math.floor(Math.random() * Math.floor(50)),
       display: [],
       shades: []
     };
@@ -32,7 +31,7 @@ class App extends React.Component {
         let randomProducts = [];
         for(var i = 0; i < 4; i++) {
             let min = Math.ceil(0);
-            let max = Math.floor(50);
+            let max = Math.floor(100);
             randomProducts.push(data.data[Math.floor(Math.random() * (max - min + 1)) + min])
         }
         this.setState({
@@ -51,7 +50,7 @@ class App extends React.Component {
       <div className="overlay" >
       <div className="main">
 
-        <h2 className="title">You may also like</h2>
+        <h2 className="titleSugg">You may also like</h2>
         <div className="items-container">
           {this.state.display
             .map((item, index) => (

@@ -22,7 +22,7 @@
   right: 0;
 } */
 
-.title {
+.titleSugg {
   display: block;
   font-family: "Freight Display";
   font-size: 36px;
@@ -47,6 +47,8 @@
   flex-grow: 0;
   flex-shrink: 1;
   line-height: 21px;
+
+
 }
 
 .image {
@@ -275,6 +277,12 @@ a:hover {
   justify-content: center;
 }
 
+.qv-img-circles {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 35px;
+}
+
 .swatch-button:hover, .qv-img-circles:hover {
   border-color: blue;
   border-width: 2px;
@@ -289,14 +297,13 @@ a:hover {
 
 
 
-
 .product-view{
   position: fixed;
   top: 50%;
   left: 50%;
   width: 810px;
   height: 600px;
-  padding: 10px;
+  padding: 25px;
   border: 3px black;
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
@@ -310,6 +317,8 @@ a:hover {
   border-radius: 8px;
   flex-wrap: wrap;
   flex-direction: row;
+
+
 }
 
 .qv-window {
@@ -327,6 +336,7 @@ a:hover {
   font-family: "Apercu Pro";
   font-size: 14px;
   padding-left:20px;
+  padding-bottom: 20px;
 }
 
 
@@ -378,11 +388,15 @@ a.see-page {
   position: absolute;
   z-index: 3;
   left: 55%;
-  top: 65%;
+  top: 74%;
 }
 
 .qv-shades, .qv-size {
   font-family: "Apercu Pro";
+  font-size: 14px;
+}
+.qv-shades, .qv-size-title {
+  font-family: "Apercu Pro Bold";
   font-size: 14px;
 }
 
@@ -416,6 +430,37 @@ a.see-page {
   text-align: center;
   cursor: pointer;
   text-rendering: auto;
+  margin-left: 5%;
+}
+
+
+
+.input {
+  border-radius: 3px;
+  border-color: black;
+  width: 72px;
+  border: 1px solid;
+  display: flex;
+  text-align: center;
+  min-height: 48px;
+  padding: 6px 0;
+  position: relative;
+  align-items: center;
+}
+
+.qv-signs {
+  background-color: white;
+  border: none;
+  align-items: flex-start;
+  cursor: pointer;
+  flex: 1 1;
+ 
+}
+
+.qv-cart {
+  margin-top: 5%;
+  display: flex;
+  flex-direction: row;
 }
 
 .qv-img-row {

@@ -16,7 +16,9 @@ class Items extends React.Component {
       choosingShade: false,
       imageHover: false,
       qViewBtn: false,
-      price: this.props.item.suggMiniPrice
+      price: this.props.item.suggMiniPrice,
+      input: 1,
+      firstImage: this.props.item.suggMain
     }
     this.toggleQuick = this.toggleQuick.bind(this);
     this.toggleSize =this.toggleSize.bind(this);
@@ -26,6 +28,9 @@ class Items extends React.Component {
     this.getShades = this.getShades.bind(this);
     this.toggleRadio = this.toggleRadio.bind(this);
     this.getQuickviewImg = this.getQuickviewImg.bind(this);
+    this.handleIncrease = this.handleIncrease.bind(this);
+    this.handleDecrease = this.handleDecrease.bind(this);
+    this.changeQvImage = this.changeQvImage.bind(this);
   }
 
   componentDidMount() {
@@ -35,7 +40,7 @@ class Items extends React.Component {
 
   getShades() {
     axios
-      .get("http://localhost:3050/products/shades")
+      .get("/products/shades")
       .then((data) => {
         this.setState({
           shades: data.data
@@ -48,7 +53,7 @@ class Items extends React.Component {
 
   getQuickviewImg() {
     axios
-      .get("http://localhost:3050/products/quickview")
+      .get("/products/quickview")
       .then((data) => {
         this.setState({
           quickview: data.data
@@ -62,7 +67,8 @@ class Items extends React.Component {
 
   toggleQuick() {
     this.setState({
-      quick: !this.state.quick
+      quick: !this.state.quick,
+      firstImage: this.props.item.suggMain
     })
   }
 
@@ -97,6 +103,26 @@ class Items extends React.Component {
     })
   }
 
+  handleIncrease() {
+    this.setState({
+      input: this.state.input + 1
+    })
+  }
+
+  handleDecrease() {
+    if(this.state.input > 1) {
+      this.setState({
+        input: this.state.input - 1
+      })
+    }
+  }
+
+  changeQvImage (e) {
+    this.setState({
+      firstImage: e.target.value
+    })
+  }
+
 
   render () {
     return (
@@ -124,11 +150,14 @@ class Items extends React.Component {
 
 
             <div className = "qv-img-row">
+            <button className="qv-img-circles" onClick={this.changeQvImage} value={this.props.item.suggMain} style={ {backgroundImage: `url(${this.props.item.suggMain})`} }></button>
+            <button className="qv-img-circles" onClick={this.changeQvImage} value={this.props.item.suggHover} style={ {backgroundImage: `url(${this.props.item.suggHover})`} }></button>
             {this.state.quickview.slice(0,5).map((image, index)  => (
-            <button className="qv-img-circles" style={ {backgroundImage: `url(${image.qvImage})`} }></button>))}
+            <button className="qv-img-circles" onClick={this.changeQvImage} value={image.qvImage} style={ {backgroundImage: `url(${image.qvImage})`} }></button>))}
              </div>
 
-             <img className="big-img" src={this.props.item.suggMain}></img>
+             {/* <img className="big-img" src={this.props.item.suggMain}></img> */}
+             <img className="big-img" src={this.state.firstImage}></img>
 
             <div className="full-desc">
               {this.props.item.suggDesc} <br />
@@ -137,22 +166,24 @@ class Items extends React.Component {
 
             <div className="options">
 
-            {this.props.item.suggType === 'makeup' ? (<div><div className="qv-shades"> {this.props.item.suggShade} shades available</div> {this.state.shades.slice(0, this.props.item.suggShade).map((swatch, index)  => (
+            {this.props.item.suggType === 'makeup' ? (<div className=""><div className="qv-shades"> {this.props.item.suggShade} shades available</div> {this.state.shades.slice(0, this.props.item.suggShade).map((swatch, index)  => (
             <button className="swatch-button" style={ {backgroundImage: `url(${swatch.shadeImage})`} }></button>))} </div>)
             : (<div>
               <form className="qv-size" action="">
-              2 sizes available<br />
+              <text className="qv-size-title">2 sizes available</text><br />
               <label className="radio">
-              <input type="radio" name="size" value="Full Size" /> Full-size </label> 6 fl oz / 177 ml <br />
+              <input type="radio" name="size" value="Full Size" onClick={()=>this.toggleRadio(this.props.item.suggPrice)} /> Full-size </label> 6 fl oz / 177 ml <br />
               <label className="radio">
-              <input type="radio" name="size" value="Mini" checked={true} /> Mini Size </label> 2 fl oz / 60 ml
+              <input type="radio" name="size" value="Mini" defaultChecked={true} onClick={()=>this.toggleRadio(this.props.item.suggMiniPrice)} /> Mini Size </label> 2 fl oz / 60 ml
             </form>
               </div>
             )}
-
-
-              <input type="number" defaultValue="1"></input>
-              <button className="qv-button">Add to Bag  — </button>
+            <div className="qv-cart">
+              <div className="input">
+              <button className="qv-signs" onClick={this.handleDecrease}>-</button> {this.state.input} <button className="qv-signs" onClick={this.handleIncrease}>+</button>
+              </div>
+              <button className="qv-button">Add to Bag  — ${this.state.price * this.state.input} </button>
+            </div>
             </div>
           </div>
           </div>
@@ -160,7 +191,7 @@ class Items extends React.Component {
         : null
         }
           <div className="details-container">
-          <a href="http://localhost:3050/">
+          <a href="http://localhost:8000/">
             <p className="item-name" >{this.props.item.suggItem}</p>
           <div className="mini-desc" href="http://localhost:3050/" >{this.props.item.suggMiniDesc}</div>
           </a>
