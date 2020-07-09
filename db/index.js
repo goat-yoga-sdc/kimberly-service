@@ -1,15 +1,24 @@
-var mysql = require('mysql');
+const {MongoClient} = require('mongodb');
+const assert = require('assert');
+const seed = require('./seed.js');
+const url = 'mongodb://localhost:27017';
 
-var connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "suggestedItems"
+const dbName = 'suggestedItems';
+var db;
+
+MongoClient.connect(url, {useUnifiedTopology: true}, function(err, client) {
+  assert.equal(null, err);
+  console.log("Connected successfully to server");
+
+  db = client.db(dbName);
+
+  seed.insertDocumentsMainSuggest(db, function() {
+    seed.insertDocumentsQuickView (db, function() {
+      seed.insertDocumentsShades(db, function() {
+        client.close();
+      })
+    })
+  });
 });
 
-connection.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected!");
-});
-
-module.exports = connection;
+module.exports = {db};
