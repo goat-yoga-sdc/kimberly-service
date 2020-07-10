@@ -2,6 +2,7 @@ const dbHelpers = require('../db/model.js');
 
 const controller = {
 getAll: (req, res) => {
+
   dbHelpers.getAll((err, result) => {
     if (err) {
       res.status(400).send('Cannot Get All')
