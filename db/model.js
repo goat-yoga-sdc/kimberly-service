@@ -12,11 +12,7 @@ getAll: (callback) => {
       var db = client.db(dbName);
       const collection = db.collection('MainSuggest');
       collection.find({}).toArray((err, docs) => {
-        if(err) {
-          callback(err)
-        } else {
-          callback(null, docs)
-        }
+        err ? callback(err) : callback(null, docs)
       });
     }
     client.close();
@@ -30,11 +26,7 @@ getShades: (callback) => {
       var db = client.db(dbName);
       const collection = db.collection('Shades');
       collection.find({}).toArray((err, docs) => {
-        if(err) {
-          callback(err)
-        } else {
-          callback(null, docs)
-        }
+        err ? callback(err) : callback(null, docs)
       });
     }
     client.close();
@@ -48,11 +40,7 @@ getQuickview: (callback) => {
       var db = client.db(dbName);
       const collection = db.collection('QuickView');
       collection.find({}).toArray((err, docs) => {
-        if(err) {
-          callback(err)
-        } else {
-          callback(null, docs)
-        }
+        err ? callback(err) : callback(null, docs)
       });
     }
     client.close();
