@@ -11,7 +11,6 @@ MongoClient.connect(url, {useUnifiedTopology: true}, function(err, client) {
   assert.equal(null, err);
 
   db = client.db(dbName);
-  // console.log('db', db)
   seed.insertDocumentsMainSuggest(db, function() {
     seed.insertDocumentsQuickView (db, function() {
       seed.insertDocumentsShades(db, function() {
@@ -21,4 +20,3 @@ MongoClient.connect(url, {useUnifiedTopology: true}, function(err, client) {
   });
 });
 
-module.exports = db;
