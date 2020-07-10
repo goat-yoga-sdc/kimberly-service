@@ -7,11 +7,10 @@ const dbName = 'suggestedItems';
 var db;
 
 MongoClient.connect(url, {useUnifiedTopology: true}, function(err, client) {
-  assert.equal(null, err);
   console.log("Connected successfully to server");
+  assert.equal(null, err);
 
   db = client.db(dbName);
-
   seed.insertDocumentsMainSuggest(db, function() {
     seed.insertDocumentsQuickView (db, function() {
       seed.insertDocumentsShades(db, function() {
@@ -21,4 +20,3 @@ MongoClient.connect(url, {useUnifiedTopology: true}, function(err, client) {
   });
 });
 
-module.exports = {db};
