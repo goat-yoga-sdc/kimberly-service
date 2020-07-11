@@ -11,12 +11,12 @@ MongoClient.connect(url, {useUnifiedTopology: true}, function(err, client) {
   assert.equal(null, err);
 
   db = client.db(dbName);
-  seed.insertDocumentsMainSuggest(db, function() {
-    seed.insertDocumentsQuickView (db, function() {
-      seed.insertDocumentsShades(db, function() {
+  // seed.insertDocumentsMainSuggest(db, function() {
+  //   seed.insertDocumentsQuickView (db, function() {
+  //     seed.insertDocumentsShades(db, function() {
         client.close();
-      })
-    })
-  });
+  //     })
+  //   })
+  // });
 });
 
