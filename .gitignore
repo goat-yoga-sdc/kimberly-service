@@ -26,8 +26,8 @@ build/
 client/dist/bundle.js
 
 #CSV files
-db/mainSuggest.csv
-db/quickView.csv
-db/shades.csv
+db/mongo/mainSuggest.csv
+db/mongo/quickView.csv
+db/mongo/shades.csv
 
 
