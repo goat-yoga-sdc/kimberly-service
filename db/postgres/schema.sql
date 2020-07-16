@@ -39,5 +39,3 @@ DELIMITER ',' CSV HEADER;
 COPY shades(id, shadeImage)
 FROM '/Volumes/Macintosh HD/Users/Kimberly/hrla-sei-all-files/SDC/suggested-items/db/shades.csv'
 DELIMITER ',' CSV HEADER;
-
-CREATE INDEX id ON mainsuggest(id);
