@@ -26,10 +26,14 @@ build/
 client/dist/bundle.js
 
 #CSV files
-db/mongo/mainSuggest.csv
-db/mongo/quickView.csv
-db/mongo/shades.csv
+db/mainSuggest.csv
+db/quickView.csv
+db/shades.csv
 
 
 #loader.io
 loader/
+
+#memory leak reports :(
+report.20200716.120033.5827.0.001.json
+report.20200716.120109.5861.0.001.json
