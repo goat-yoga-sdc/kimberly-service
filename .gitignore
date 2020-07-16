@@ -31,3 +31,5 @@ db/mongo/quickView.csv
 db/mongo/shades.csv
 
 
+#loader.io
+loader/

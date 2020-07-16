@@ -2,7 +2,7 @@ const fs = require('fs');
 const faker = require("faker");
 
 const writeMainSuggest = fs.createWriteStream('mainSuggest.csv');
-writeMainSuggest.write('id, item, price, miniprice, bestseller, suggMain, suggHover, type, miniDesc, fullDesc,shade\n', 'utf8');
+writeMainSuggest.write('id, suggItem, suggPrice, suggMiniPrice, suggMain, suggHover, suggShade, suggBest, suggMiniDesc, suggType, suggDesc\n', 'utf8');
 
 const writeQuickView = fs.createWriteStream('quickView.csv');
 writeQuickView.write('id, qvImage\n', 'utf8');
@@ -33,8 +33,8 @@ const createType = () => {
   return types[Math.floor(Math.random() * 3)]
 }
 
-function writeFourMillionMainSuggestItems(writer, encoding, callback) {
-  let i = 4000000;
+function writeTenMillionMainSuggestItems(writer, encoding, callback) {
+  let i = 10000000;
   let id = 0;
   function write() {
     let ok = true;
@@ -51,8 +51,7 @@ function writeFourMillionMainSuggestItems(writer, encoding, callback) {
       let miniDesc = faker.lorem.words();
       let fullDesc = faker.lorem.paragraph();
       let shade = createNumber(1, 9);
-
-      const data = `${id},${item},${price},${miniprice},${bestseller},${suggMain},${suggHover},${type},${miniDesc},${fullDesc},${shade} \n`;
+      const data = `${id},${item},${price},${miniprice},${suggMain},${suggHover},${shade},${bestseller},${miniDesc},${type},${fullDesc} \n`;
       if (i === 0) {
         writer.write(data, encoding, callback);
       } else {
@@ -117,7 +116,7 @@ write()
 console.log(`done`);
 }
 
-writeFourMillionMainSuggestItems(writeMainSuggest, 'utf-8', () => {
+writeTenMillionMainSuggestItems(writeMainSuggest, 'utf-8', () => {
   writeMainSuggest.end();
 });
 
