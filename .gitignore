@@ -31,3 +31,6 @@ db/mongo/quickView.csv
 db/mongo/shades.csv
 
 
+loader/
+report.20200716.120033.5827.0.001.json
+report.20200716.120109.5861.0.001.json

@@ -41,6 +41,9 @@ npm install
 
 npm start
 npm run build
+node db/mongo/seed.js
+mongoimport --type csv -d suggestedItems -c MainSuggest --headerline --drop mainSuggest.csv
+mongoimport --type csv -d suggestedItems -c QuickView --headerline --drop quickView.csv
+mongoimport --type csv -d suggestedItems -c Shades --headerline --drop shades.csv
 ```
 
-// run node db/index.js to seed (it won't run when you start the server)

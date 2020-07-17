@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "nodemon server/index.js",
-    "seed": "node db/index.js",
+    "seed": "node db/mongo/seed.js",
     "build": "webpack -d --watch"
   },
   "dependencies": {

@@ -1,4 +1,4 @@
-const dbHelpers = require('../db/model.js');
+const dbHelpers = require('../db/mongo/model.js');
 
 const controller = {
 getAll: (req, res) => {
