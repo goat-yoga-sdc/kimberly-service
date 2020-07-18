@@ -127,4 +127,3 @@ writeFourMillionQuickViewItems(writeQuickView, 'utf-8', () => {
 writeTwoMillionShades(writeShades, 'utf-8', () => {
   writeShades.end();
 });
-

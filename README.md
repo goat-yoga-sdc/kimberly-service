@@ -44,3 +44,4 @@ npm run build
 ```
 
 // run node db/index.js to seed (it won't run when you start the server)
+//psql suggesteditems < schema.sql
