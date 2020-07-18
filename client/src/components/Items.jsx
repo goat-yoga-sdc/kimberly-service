@@ -16,9 +16,9 @@ class Items extends React.Component {
       choosingShade: false,
       imageHover: false,
       qViewBtn: false,
-      price: this.props.item.suggMiniPrice,
+      price: '',
       input: 1,
-      firstImage: this.props.item.suggMain
+      firstImage: ''
     }
     this.toggleQuick = this.toggleQuick.bind(this);
     this.toggleSize =this.toggleSize.bind(this);
