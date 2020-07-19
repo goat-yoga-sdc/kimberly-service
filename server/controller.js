@@ -13,7 +13,7 @@ getAll: (req, res) => {
   })
 },
 getShades: (req, res) => {
-  dbHelpers.getShades((err, result) => {
+  dbHelpers.getShades(req.params.id, (err, result) => {
     if (err) {
       res.status(400).send('Cannot Get Shades')
     } else {
