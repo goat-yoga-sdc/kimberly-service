@@ -15,6 +15,12 @@ const noun = ['Lip Gloss', 'Eyeliner', 'Lipstick', 'Eyeshadow', 'Bronzer', 'Prim
 
 const adj = ['Milky', 'Dewy', 'Shiny', 'Glossy', 'Moist', 'Super', 'Slick', 'Stick', 'Matte', 'Boy', 'Mettalic', 'Wonder', 'Hero', 'Daily', 'Cleansing', 'Wow', 'Cloud', 'Fluff', 'Deep', 'Intense', 'Glossier', 'Glide', 'Shine', 'Pro', 'Elite', 'Stretch', 'Perfect', 'Ideal', 'Prime', 'Bubble', 'Future', 'Fave', 'Day', 'Night', 'Glow', 'High Performance', '10/10', 'Filtered', 'Go Girl', 'Made For Me', 'Main', 'Super', 'Extreme', 'Excellent', 'Mild', 'Detoxifying', 'Sky', 'Star', '5/5', 'Power', 'Reviving', 'Essential', 'Blendable', 'Color-Blend', 'Girl', 'Shimmer'];
 
+const itemImgLinks = [['https://bit.ly/2CPyTVm', 'https://bit.ly/2CKlD4C'], ['https://bit.ly/3fGdgFO', 'https://bit.ly/2DYiaQr'], ['https://bit.ly/3jitoiV', 'https://bit.ly/2WyGgYe'], ['https://bit.ly/3hfysmh', 'https://bit.ly/30qHvtH'], ['https://bit.ly/39cdj9D', 'https://bit.ly/3eJmteY'], ['https://bit.ly/2WAZvk3', 'https://bit.ly/30spriO'], ['https://bit.ly/2OF0tHy', 'https://bit.ly/2CR0XIg'],['https://bit.ly/2ZECpuU', 'https://bit.ly/2Wze9s8'], ['https://bit.ly/2OBsvDM', 'https://bit.ly/30u5yYK'], ['https://bit.ly/32wuNfK', 'https://bit.ly/32Bq7Fp'], ['https://bit.ly/3fL0PIA', 'https://bit.ly/2OQhBKR'], ['https://bit.ly/2DPj5T4', 'https://bit.ly/39gW3QL'], ['https://bit.ly/2Ch5ZxO', 'https://bit.ly/39a5kKf'], ['https://bit.ly/2WyKHm2', 'https://bit.ly/3hfBwyY'], ['https://bit.ly/3eJYvQV', 'https://bit.ly/32wZ3XL'], ['https://bit.ly/3hfzHBX', 'https://bit.ly/2WAB32d']];
+
+const qvImgLinks = ['https://bit.ly/3eI7T7E', 'https://bit.ly/397xmX1', 'https://bit.ly/2Ctcuxj', 'https://bit.ly/32zeOh0', 'https://bit.ly/32wd345', 'https://bit.ly/3eEBXAZ', 'https://bit.ly/2CQOlk1', 'https://bit.ly/2ZIiomY', 'https://bit.ly/2OBrFa6', 'https://bit.ly/2ZJjZt4', 'https://bit.ly/2OEPZbm'];
+
+const shadeLinks = ['https://bit.ly/39a6up4', 'https://bit.ly/30sMHxp', 'https://bit.ly/2OAeB57', 'https://bit.ly/3eGTE34', 'https://bit.ly/3eJltaI', 'https://bit.ly/30oFdeJ', 'https://bit.ly/39a3QQb'];
+
 const generateProduct = () => {
   let productList = {};
   productList.productItem = `${
@@ -33,6 +39,11 @@ const createType = () => {
   return types[Math.floor(Math.random() * 3)]
 }
 
+var grabRandomImgUrl = function(array) {
+  let imgNumber = Math.floor(Math.random() * Math.floor(array.length));
+  return array[imgNumber];
+}
+
 function writeTenMillionMainSuggestItems(writer, encoding, callback) {
   let i = 10000000;
   let id = 0;
@@ -45,8 +56,9 @@ function writeTenMillionMainSuggestItems(writer, encoding, callback) {
       let price = createNumber (8, 40);
       let miniprice = price / 2;
       let bestseller = faker.random.boolean();
-      let suggMain = "https://picsum.photos/200/300";
-      let suggHover = "https://picsum.photos/200/300";
+      let suggImgs = grabRandomImgUrl(itemImgLinks);
+      let suggMain = suggImgs[0];
+      let suggHover = suggImgs[1];
       let type = createType();
       let miniDesc = faker.lorem.words();
       let fullDesc = faker.lorem.paragraph();
@@ -75,8 +87,9 @@ function writeFourMillionQuickViewItems(writer, encoding, callback) {
       i -= 1;
       id += 1;
 
-      let qvImage = "https://picsum.photos/200/300";
-      const data = `${id},${qvImage} \n`;
+      let qvImage = grabRandomImgUrl(qvImgLinks);
+
+      const data = `${id},${qvImage}\n`;
       if (i === 0) {
         writer.write(data, encoding, callback);
       } else {
@@ -100,8 +113,8 @@ function writeTwoMillionShades(writer, encoding, callback) {
       i -= 1;
       id += 1;
 
-      let shadeImage = "https://picsum.photos/200/300";
-      const data = `${id},${shadeImage} \n`;
+      let shadeImage = grabRandomImgUrl(shadeLinks);
+      const data = `${id},${shadeImage}\n`;
       if (i === 0) {
         writer.write(data, encoding, callback);
       } else {
@@ -127,3 +140,4 @@ writeFourMillionQuickViewItems(writeQuickView, 'utf-8', () => {
 writeTwoMillionShades(writeShades, 'utf-8', () => {
   writeShades.end();
 });
+
