@@ -40,7 +40,7 @@ class Items extends React.Component {
 
   getShades() {
     axios
-      .get("/products/shades")
+      .get(`/products/shades/${this.props.item.suggShade}`)
       .then((data) => {
         this.setState({
           shades: data.data
@@ -53,7 +53,7 @@ class Items extends React.Component {
 
   getQuickviewImg() {
     axios
-      .get("/products/quickview")
+      .get(`/products/quickview`)
       .then((data) => {
         this.setState({
           quickview: data.data
@@ -141,18 +141,21 @@ class Items extends React.Component {
         <div>
           <div className ="qv-window"></div>
           <div className="product-view">
-            <div className="qv-title"><h2>{this.props.item.suggItem} ${this.state.price}</h2>
+            <div className="qv-title">
+              {
+                this.state.price ?
+                <h2>{this.props.item.suggItem} $ {this.state.price}</h2>
+               : <h2>{this.props.item.suggItem} ${this.props.item.suggMiniPrice}</h2>
+              }
             <button className="close-button" onClick={this.toggleQuick}>X</button>
             </div>
 
             <div className="qv-main">
             {/* <img className="qv-img-static" src = "https://suggested-items.s3-us-west-1.amazonaws.com/Screen+Shot+2020-07-01+at+9.19.53+AM.png"></img> */}
-
-
             <div className = "qv-img-row">
             <button className="qv-img-circles" onClick={this.changeQvImage} value={this.props.item.suggMain} style={ {backgroundImage: `url(${this.props.item.suggMain})`} }></button>
             <button className="qv-img-circles" onClick={this.changeQvImage} value={this.props.item.suggHover} style={ {backgroundImage: `url(${this.props.item.suggHover})`} }></button>
-            {this.state.quickview.slice(0,5).map((image, index)  => (
+            {this.state.quickview.map((image, index)  => (
             <button className="qv-img-circles" onClick={this.changeQvImage} value={image.qvImage} style={ {backgroundImage: `url(${image.qvImage})`} }></button>))}
              </div>
 
@@ -166,7 +169,7 @@ class Items extends React.Component {
 
             <div className="options">
 
-            {this.props.item.suggType === 'makeup' ? (<div className=""><div className="qv-shades"> {this.props.item.suggShade} shades available</div> {this.state.shades.slice(0, this.props.item.suggShade).map((swatch, index)  => (
+            {this.props.item.suggType === 'makeup' ? (<div className=""><div className="qv-shades"> {this.props.item.suggShade} shades available</div> {this.state.shades.map((swatch, index)  => (
             <button className="swatch-button" style={ {backgroundImage: `url(${swatch.shadeImage})`} }></button>))} </div>)
             : (<div>
               <form className="qv-size" action="">
@@ -182,7 +185,11 @@ class Items extends React.Component {
               <div className="input">
               <button className="qv-signs" onClick={this.handleDecrease}>-</button> {this.state.input} <button className="qv-signs" onClick={this.handleIncrease}>+</button>
               </div>
-              <button className="qv-button">Add to Bag  — ${this.state.price * this.state.input} </button>
+              {
+                this.state.price ?
+                <button className="qv-button">Add to Bag  — ${this.state.price * this.state.input} </button>
+                : <button className="qv-button">Add to Bag  — ${this.props.item.suggMiniPrice * this.state.input} </button>
+              }
             </div>
             </div>
           </div>
@@ -210,7 +217,11 @@ class Items extends React.Component {
           }
 
           {(this.props.item.suggType === 'skincare') ? (<div className="size-div">
-            <button className="size-button" onClick={this.toggleSize}>Choose Size — ${this.state.price}+</button>
+            {
+              this.state.price ?
+              <button className="size-button" onClick={this.toggleSize}>Choose Size — ${this.state.price}+</button>
+              : <button className="size-button" onClick={this.toggleSize}>Choose Size — ${this.props.item.suggMiniPrice}+</button>
+            }
           </div>)
           : null
           }
@@ -223,7 +234,7 @@ class Items extends React.Component {
 
           {this.state.choosingShade ? (<div className="choose-shade">
             {this.props.item.suggShade} shades available <br />
-            <div className="swatch-container"> {this.state.shades.slice(0, this.props.item.suggShade).map((swatch, index)  => (
+            <div className="swatch-container"> {this.state.shades.map((swatch, index)  => (
             <button className="swatch-button" style={ {backgroundImage: `url(${swatch.shadeImage})`} }></button>))
           } </div>
 
