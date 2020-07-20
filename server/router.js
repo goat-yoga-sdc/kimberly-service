@@ -6,7 +6,7 @@ router
 .get(controller.getAll)
 
 router
-.route('/shades')
+.route('/shades/:id')
 .get(controller.getShades);
 
 router
