@@ -34,7 +34,9 @@ class Items extends React.Component {
   }
 
   componentDidMount() {
-    this.getShades();
+    if (this.props.item.suggType === 'makeup') {
+      this.getShades();
+    }
     this.getQuickviewImg();
   }
 

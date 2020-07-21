@@ -8,7 +8,7 @@ getAll: (req, res) => {
       console.log("error:", err)
       res.status(400).send('Cannot Get All')
     } else {
-      res.status(200).send(result.rows)
+      res.status(200).json(result.rows)
     }
   })
 },
@@ -17,7 +17,7 @@ getShades: (req, res) => {
     if (err) {
       res.status(400).send('Cannot Get Shades')
     } else {
-      res.status(200).send(result.rows)
+      res.status(200).json(result.rows)
     }
   })
 },
@@ -26,7 +26,7 @@ getQuickview: (req, res) => {
     if (err) {
       res.status(400).send('Cannot Get Quickview Images')
     } else {
-      res.status(200).send(result.rows)
+      res.status(200).json(result.rows)
     }
   })
 }
