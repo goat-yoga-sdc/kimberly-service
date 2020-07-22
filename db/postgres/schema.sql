@@ -29,13 +29,13 @@ CREATE TABLE shades (
 );
 
 COPY mainsuggest(id, "suggItem", "suggPrice", "suggMiniPrice", "suggMain", "suggHover", "suggShade", "suggBest", "suggMiniDesc", "suggType", "suggDesc")
-FROM '/Volumes/Macintosh HD/Users/Kimberly/hrla-sei-all-files/SDC/suggested-items/db/mainSuggest.csv'
+FROM '/home/ubuntu/kimberly-service/db/mainSuggest.csv'
 DELIMITER ',' CSV HEADER;
 
 COPY quickview(id, "qvImage")
-FROM '/Volumes/Macintosh HD/Users/Kimberly/hrla-sei-all-files/SDC/suggested-items/db/quickView.csv'
+FROM '/home/ubuntu/kimberly-service/db/quickView.csv'
 DELIMITER ',' CSV HEADER;
 
 COPY shades(id, "shadeImage")
-FROM '/Volumes/Macintosh HD/Users/Kimberly/hrla-sei-all-files/SDC/suggested-items/db/shades.csv'
+FROM '/home/ubuntu/kimberly-service/db/shades.csv'
 DELIMITER ',' CSV HEADER;

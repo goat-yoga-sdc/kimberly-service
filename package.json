@@ -13,17 +13,12 @@
     "build": "webpack -d --watch"
   },
   "dependencies": {
-    "aws-sdk": "^2.705.0",
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "faker": "^4.1.0",
-    "mongodb": "^3.5.9",
-    "mongoose": "^5.9.19",
     "morgan": "^1.10.0",
-    "mysql": "^2.18.1",
-    "newrelic": "^6.11.0",
     "pg": "^8.3.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
