@@ -2,14 +2,14 @@
   "name": "suggested-item",
   "version": "",
   "description": "",
-  "author": "Marlena Ajoste",
+  "author": "Kimberly Eddinger",
   "license": "",
   "engines": {
     "node": ">=6.13.0"
   },
   "scripts": {
     "start": "nodemon server/index.js",
-    "seed": "node db/index.js",
+    "seed": "node db/postgres/seed.js",
     "build": "webpack -d --watch"
   },
   "dependencies": {
